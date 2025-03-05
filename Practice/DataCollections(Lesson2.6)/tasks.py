@@ -22,4 +22,3 @@ def accessToElementBySlice(int, int2):
     return print("the slice is: ", numbers[int:int2])
 
 accessToElementBySlice(int(input("Введите первый индекс: ")),int(input("Введите второй индекс: ")))
-
