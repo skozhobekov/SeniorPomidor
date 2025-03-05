@@ -17,3 +17,9 @@ def pickCityByIndex(int):
 pickCityByIndex(1)
 
 numbers = [0,1,2,3,4,5,6,7,8,9]
+
+def accessToElementBySlice(int, int2):
+    return print("the slice is: ", numbers[int:int2])
+
+accessToElementBySlice(int(input("Введите первый индекс: ")),int(input("Введите второй индекс: ")))
+

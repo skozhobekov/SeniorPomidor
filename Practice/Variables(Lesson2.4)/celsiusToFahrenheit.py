@@ -1,6 +1,6 @@
 def converter(farenheit):
     celsius = (farenheit-32)*5/9
-    return round(celsius,3)
+    return round(celsius,2)
 
 farenheit = float(input("Введите кол-во градусов по Фаренгейту: "))
 celsius = converter(farenheit)
