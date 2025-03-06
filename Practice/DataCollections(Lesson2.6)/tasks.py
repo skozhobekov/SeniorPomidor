@@ -59,3 +59,29 @@ student1= {"name":"Ivan", "age":20}
 def checkKeyisExist():
     print("name" in student1)
 checkKeyisExist()
+
+student2 = {"name":"Sanjar", "address":{"city":"Moscow", "street":"Lenina"}}
+def changeKeyInDictionary():
+    student2["address"]["city"] = "Bishkek"
+    print(student2)
+changeKeyInDictionary()
+
+student3 = {"name":"Sanjar", "grades":[11,2,3]}
+def changeElementInListInDict():
+    student3["grades"][0] = 7
+    print(student3)
+changeElementInListInDict()
+student4 = [{"name":"sanjar", "age":"28", "grade":"senior"}, {"name":"sultan", "age":"20", "grade":"junior"}]
+
+def changeElementInDictInList():
+    student4[0]["name"] = "SuperSanjar"
+    print(student4)
+changeElementInDictInList()
+
+colors = ("red", "black", "cock", "yellow")
+def checkElementAndLenght():
+    lenght = len(colors)
+    print("Lenght is: ", lenght)
+    if "black" in colors:
+        print("yes, is here")
+checkElementAndLenght()
