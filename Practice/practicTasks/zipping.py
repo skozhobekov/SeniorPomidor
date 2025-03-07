@@ -9,8 +9,14 @@ file_paths = [
     "testCaseStats.py",
     "bug_reports.py",
     "bug_details.py",
+    "bug_filter.py",
     "script_analysis.txt",
     "data_types.txt",
+    "discount_calculator.py",
+    "list_vs_tuple.py",
+    "log_processing.py",
+    "testBugTracker.py",
+    "testCaseValidation.py",
 ]
 
 archive_name = f"homework_fullstack_basics_{your_name}.zip"
