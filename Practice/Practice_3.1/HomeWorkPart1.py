@@ -45,17 +45,17 @@ def checkOrdersExistance(dict):
 
 checkOrdersExistance(dict)
 
-# def checkTimeDifference(order):
-#     started_at = order["startedAt"]
-#     completed_at = order["completedAt"]
-#     started_at = datetime.strptime(started_at, "%Y-%m-%dT%H:%M:%S.%fZ")
-#     completed_at = datetime.strptime(completed_at, "%Y-%m-%dT%H:%M:%S.%fZ")
-#     time_diff = completed_at - started_at
-#     hours = time_diff.total_seconds() / 3600
-#     print(f"Разница во времени: {hours:.2f} часов")
-#
-# checkTimeDifference(dict["data"][0])
-# checkTimeDifference(dict["data"][1])
+def checkTimeDifference(order):
+    started_at = order["startedAt"]
+    completed_at = order["completedAt"]
+    started_at = datetime.strptime(started_at, "%Y-%m-%dT%H:%M:%S.%fZ")
+    completed_at = datetime.strptime(completed_at, "%Y-%m-%dT%H:%M:%S.%fZ")
+    time_diff = completed_at - started_at
+    hours = time_diff.total_seconds() / 3600
+    print(f"Разница во времени: {hours:.2f} часов")
+
+checkTimeDifference(dict["data"][0])
+checkTimeDifference(dict["data"][1])
 
 def checkIfServicesCompleted(order):
     count = order["count"]
@@ -68,19 +68,4 @@ def checkIfServicesCompleted(order):
         print("не все услуги не обработаны")
 
 checkIfServicesCompleted(dict["data"][2])
-
-
-# Надо убедиться, что время выполнение первого и второго заказов не превышает 6 часов
-# def check_time_difference(order):
-# #     start_time = datetime.fromisoformat(dict['startedAt'][:-1])
-# #     # completed_time = datetime.fromisoformat(dict['completedAt'][:-1])
-# #     start_time = datetime.strptime(order['startedAt'], "%Y-%m-%dT%H:%M:%S.%fZ")
-# #     completed_time = datetime.strptime(order['completedAt'], "%Y-%m-%dT%H:%M:%S.%fZ")
-# #
-# #
-# #     time_diff = (completed_time - start_time).total_seconds() / 3600
-# #     #print(f"Время выполнения заказа: {time_diff:.2f} ч")
-# #
-# # check_time_difference(dict["data"][0])
-# # check_time_difference(dict["data"][1])
 
