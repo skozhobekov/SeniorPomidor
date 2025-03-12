@@ -59,4 +59,3 @@ if isUnique(s4):
 else:
     print("NO")
 
-isUnique(s4)
