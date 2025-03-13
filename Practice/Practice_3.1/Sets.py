@@ -26,4 +26,4 @@ def get_unique_vowels(s):
             vowelsList.append(letter)
     return set(vowelsList)
 
-print(get_unique_vowels("sanjareio"))
+print(get_unique_vowels("SANJAREIO".capitalize()))
