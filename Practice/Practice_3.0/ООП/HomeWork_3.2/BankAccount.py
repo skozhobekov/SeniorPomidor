@@ -8,7 +8,7 @@ class BankAccount:
         self.amount = amount
         if amount > 0:
             self._balance += amount
-            print(f"your balance is: {self._balance}")
+            print(f"your balance after deposit is: {self._balance}")
             return True
         else:
             print(f"amount must be positive")
@@ -44,7 +44,7 @@ class SavingsAccount(BankAccount):
     def apply_interest(self):
         interest = self._balance * self.interest_rate
         self._balance += interest
-        return print(self._balance)
+        return print(f"your self balance with interest is: {self._balance}")
 
 class CheckingAccount(BankAccount):
     def __init__(self, owner):
