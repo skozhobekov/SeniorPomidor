@@ -1,3 +1,5 @@
+from dataclasses import dataclass
+
 class BankAccount:
     def __init__(self, owner):
         self.owner = owner
