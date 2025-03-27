@@ -20,12 +20,13 @@ class BankAccount:
         self.amount = amount
         try:
             if self._balance < amount:
-                raise ValueError ("not enough money on your balance")
+                raise ValueError ("not enough money to withdraw")
             if self._balance > amount:
                    self._balance -=amount
                    print(f"your new balance after withdraw is: {self._balance}")
         except ValueError as err:
             print(err)
+            return self._balance
 
     def get_balance(self):
         return self._balance
@@ -46,17 +47,21 @@ class SavingsAccount(BankAccount):
     def apply_interest(self):
         interest = self._balance * self.interest_rate
         self._balance += interest
-        return print(f"your self balance with interest is: {self._balance}")
+        return self._balance
 
 class CheckingAccount(BankAccount):
     def __init__(self, owner):
         super().__init__(owner)
 
     def withdraw(self, amount):
-        self._balance -= amount
-        return print(f"your balance after withdraw is: {self._balance}")
+        if amount > self._balance:
+            return print("not enough money to withdraw")
+        else:
+            self._balance -= amount
+        return self._balance
+
 
 savingAcc = SavingsAccount("Sanjar baike", 0.2)
-savingAcc.deposit(500)
-savingAcc.withdraw(100)
-savingAcc.apply_interest()
+print(savingAcc.deposit(500))
+print(savingAcc.withdraw(10000))
+print(savingAcc.apply_interest())

@@ -12,7 +12,7 @@ is_anagram(s1,s2)
 
 # Палиндром
 def isPalindrom(string):
-    string1 = string[::-1]
+    string1 = string[::-1].strip()
     if string1 == string:
         return print("Yes it is Palindrom")
     else:
