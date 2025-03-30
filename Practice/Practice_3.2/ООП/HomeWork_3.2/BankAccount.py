@@ -7,7 +7,6 @@ class BankAccount:
 
 
     def deposit(self, amount):
-        self.amount = amount
         if amount > 0:
             self._balance += amount
             print(f"your balance after deposit is: {self._balance}")
@@ -55,9 +54,9 @@ class CheckingAccount(BankAccount):
 
     def withdraw(self, amount):
         if amount > self._balance:
-            return print("not enough money to withdraw")
-        else:
-            self._balance -= amount
+            print("Not enough money to withdraw")
+            return None
+        self._balance -= amount
         return self._balance
 
 

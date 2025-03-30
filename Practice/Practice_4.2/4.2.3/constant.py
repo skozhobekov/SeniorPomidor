@@ -9,6 +9,7 @@ data = {
     "client_secret": ""
 }
 
+
 put_update_data = {
 
   "title": "updated_title",
