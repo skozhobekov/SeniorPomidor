@@ -16,9 +16,15 @@ class BankAccount:
             return False
 
     def withdraw(self, amount):
-        self._balance -=amount
-        print(f"your new balance after withdraw is: {self._balance}")
-        return self._balance
+        try:
+            if amount > self._balance:
+                raise ValueError ("not enough money for withdraw")
+            else:
+                self._balance -=amount
+                print(f"your new balance after withdraw is: {self._balance}")
+                return self._balance
+        except ValueError as err:
+            print(err)
 
     def get_balance(self):
         return self._balance
@@ -51,9 +57,12 @@ class CheckingAccount(BankAccount):
 
 
 savingAcc = SavingsAccount("Sanjar baike", 0.2)
+checkingAcc = CheckingAccount(savingAcc)
 print(savingAcc.deposit(500))
 print(savingAcc.withdraw(10000))
 print(savingAcc.apply_interest())
+print(checkingAcc.deposit(500))
+print(checkingAcc.withdraw(10000))
 
 
 #перепиши по ТЗ withdraw в BankAccount и CheckingAccount
