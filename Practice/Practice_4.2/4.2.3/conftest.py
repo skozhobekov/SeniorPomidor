@@ -16,15 +16,31 @@ def auth_session():
     session.headers.update({"Authorization": f"Bearer {token}", "Content-Type": "application/json", "Accept": "application/json"})
     yield session
 
+    # Попытка
+    # создать, получить
+    # или
+    # удалить
+    # элемент
+    # без
+    # токена
+
 @pytest.fixture()
 def auth_with_different_ContentType(auth_session):
     return None
 
 
 fake = Faker()
-@pytest.fixture(scope="package")
+@pytest.fixture(scope="session")
 def item_data():
     return {
         "title": fake.word(),
         "description": fake.word()
     }
+
+@pytest.fixture(scope="session")
+def invalid_data():
+    return {
+        "title": "",
+        "description": "null"
+    }
+
