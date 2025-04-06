@@ -25,8 +25,8 @@ class TestCases:
         assert response.status_code == 400, "incorrect login or password"
         assert "detail" in response.json()
 
-    def test_sort_by_fields(self, auth_session):
-        responses
+    # def test_sort_by_fields(self, auth_session):
+    #
 
     def test_create_item(self, item_data, auth_session):
         response = auth_session.post(f"{base_url}/items/", json=item_data)
