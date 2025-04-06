@@ -16,14 +16,6 @@ def auth_session():
     session.headers.update({"Authorization": f"Bearer {token}", "Content-Type": "application/json", "Accept": "application/json"})
     yield session
 
-    # Попытка
-    # создать, получить
-    # или
-    # удалить
-    # элемент
-    # без
-    # токена
-
 @pytest.fixture()
 def auth_with_different_ContentType(auth_session):
     return None

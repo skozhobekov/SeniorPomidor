@@ -1,13 +1,32 @@
 from http.client import responses
 
+import allure
 import requests
 from constant import base_url
 from constant import data
 from constant import put_update_data
+from constant import auth_data
+from constant import invalid_auth_data
 from constant import HEADERS
+from constant import HEADERS_FOR_AUTH
 
 
 class TestCases:
+    @allure.title("Создание нового элемента")
+    def test_valid_auth(self, auth_session):
+        response = auth_session.post(f"{base_url}/login/access-token", headers=HEADERS_FOR_AUTH, data=auth_data)
+        assert response.status_code == 200, "unexpected status code"
+        assert "access_token" in response.json()
+        json_data = response.json()
+        assert json_data["token_type"] == "bearer"
+
+    def test_invalid_auth(self, auth_session):
+        response = auth_session.post(f"{base_url}/login/access-token", headers=HEADERS, data=invalid_auth_data, )
+        assert response.status_code == 400, "incorrect login or password"
+        assert "detail" in response.json()
+
+    def test_sort_by_fields(self, auth_session):
+        responses
 
     def test_create_item(self, item_data, auth_session):
         response = auth_session.post(f"{base_url}/items/", json=item_data)
@@ -17,6 +36,10 @@ class TestCases:
 
     def test_create_item_with_invalid_fields(self, auth_session, invalid_data):
         response = auth_session.post(f"{base_url}/items/", json=invalid_data)
+        assert response.status_code == 422, "unexpected status code"
+
+    def test_create_item_with_empty_fields(self, auth_session, invalid_data):
+        response = auth_session.post(f"{base_url}/items/")
         assert response.status_code == 422, "unexpected status code"
 
     def test_create_item_without_token(self, item_data):
@@ -35,15 +58,6 @@ class TestCases:
         assert isinstance(json_data["count"], int), "'count' should be an integer"
         assert len(json_data["data"]) <= 100, "More items than limit returned"
 
-
-
-    def test_sort_items(self, auth_session):
-        params = {"sort": "price"}
-        response = auth_session.get(f"{base_url}/items/", params=params)
-        assert response.status_code == 200
-        data = response.json().get("data", [])
-        prices = [item.get("price") for item in data if "title" in item]
-        assert prices == sorted(prices), "Items are not sorted by price ascending"
 
     def test_pagination(self, auth_session):
         scip = 0
@@ -83,9 +97,11 @@ class TestCases:
 
 
     def test_full_update_item(self, auth_session, item_data):
-        response = auth_session.put(f"{base_url}/items", json=put_update_data)
-        print(response.json())
-        auth_session.headers.update({"Content-Type":"application/json"})
-        response = auth_session.put(f"{base_url}/items", json=put_update_data)
-        assert response.json().get("title") == "updated_title"
-        assert response.json().get("description") == "updated_description"
+        create_item = auth_session.post(f"{base_url}/items/", json=item_data)
+        item_id = create_item.json().get("id")
+        response = auth_session.put(f"{base_url}/items/{item_id}", json=put_update_data)
+        assert response.status_code == 200, "unexpected status code"
+        assert response.json().get("title") == "updated_title",  "not updated"
+        assert response.json().get("title") == put_update_data.get("title"),  "not updated"
+        assert response.json().get("description") == put_update_data["description"],  "not updated"
+

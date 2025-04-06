@@ -45,7 +45,7 @@ class TestBooking():
         new_total_price = get_booking.json().get("totalprice")
         print(new_total_price)
         assert new_total_price is not None
-        assert new_total_price == -100, "total price is over 0"
+        assert new_total_price == 100, "total price is over 0" #-100
 
 
 

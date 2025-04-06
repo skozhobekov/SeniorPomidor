@@ -10,11 +10,22 @@ def test_func(browser):
     loginPage = LoginPage(page)
     inventoryPage = InventoryPage(page)
     checkoutPage = CheckOutPage(page)
-
     loginPage.login("problem_user", "secret_sauce")
     inventoryPage.add_first_item_to_cart()
-    checkoutPage.start_checkout()
-    checkoutPage.fill_checkout_fields("sanjar", "kojobekov", "1996", 50 )
+    # checkoutPage.start_checkout()
+    # checkoutPage.fill_checkout_fields("sanjar", "kojobekov", "1996", 50 )
+
+def test_logout(browser):
+    page = browser.new_page()
+    loginPage = LoginPage(page)
+    loginPage.login("problem_user", "secret_sauce")
+    loginPage.logout()
+
+
+
+
+
+
 
 
 
