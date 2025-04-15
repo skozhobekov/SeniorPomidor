@@ -1,4 +1,4 @@
-from Base_Page import BasePage
+from base_page import BasePage
 
 class CheckOutPage(BasePage):
     CHECKOUT_BUTTON_SELECTOR = '[data-test="checkout"]'
@@ -15,17 +15,17 @@ class CheckOutPage(BasePage):
 
 
     def start_checkout(self):
+        self.assert_text_in_element(self.CHECKOUT_BUTTON_SELECTOR)
         self.wait_for_selector_and_click(self.CHECKOUT_BUTTON_SELECTOR)
+        self.assert_text_presents_on_page("Checkout: Your Information")
 
-    def fill_the_checkout_data_and_continue(self, firstname, lastname, postalCode):
+    def fill_checkout_data_and_continue(self, firstname, lastname, postal_code):
         self.assert_element_isVisible(self.FIRSTNAME_FIELD)
         self.wait_for_selector_and_type(self.FIRSTNAME_FIELD, firstname)
         self.wait_for_selector_and_type(self.LASTNAME_FIELD, lastname)
-        self.wait_for_selector_and_type(self.POSTALCODE_FIELD, postalCode)
+        self.wait_for_selector_and_type(self.POSTALCODE_FIELD, postal_code)
         self.wait_for_selector_and_click(self.CONTINUE_BUTTON)
 
     def finish_checkout(self):
         self.wait_for_selector_and_click(self.FINISH_BUTTON)
         self.assert_text_in_element(self.COMPLETED_SELECTOR, "Thank you for your order!")
-
-

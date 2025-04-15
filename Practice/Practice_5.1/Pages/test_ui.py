@@ -1,7 +1,7 @@
 from pydoc import pager
-from Login_Page import LoginPage
-from Inventory_Page import InventoryPage
-from CheckOut_Page import CheckOutPage
+from login_page import LoginPage
+from inventory_page import InventoryPage
+from checkout_page import CheckOutPage
 import time
 from playwright.sync_api import sync_playwright
 

@@ -1,4 +1,4 @@
-from Base_Page import BasePage
+from base_page import BasePage
 
 class LoginPage(BasePage):
      def __init__(self, page):
@@ -11,6 +11,7 @@ class LoginPage(BasePage):
      LOGIN_BUTTON_SELECTOR = '#login-button'
      LOGOUT_BURGER = '.bm-burger-button'
      LOGOUT_BUTTON = '#logout_sidebar_link'
+     LOGOUT_BUTTON_TEXT = 'text = Login'
 
      def login(self, username, password):
          self.navigate_to_url()
@@ -22,6 +23,7 @@ class LoginPage(BasePage):
      def logout(self):
         self.wait_for_selector_and_click(self.LOGOUT_BURGER)
         self.wait_for_selector_and_click(self.LOGOUT_BUTTON)
+        self.assert_text_in_element(self.LOGOUT_BUTTON_TEXT, "Login")
 
 
 

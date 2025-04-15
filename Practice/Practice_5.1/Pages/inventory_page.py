@@ -1,4 +1,4 @@
-from Base_Page import BasePage
+from base_page import BasePage
 
 class InventoryPage(BasePage):
     PRODUCT_TO_CLICK_SELECTOR = '.inventory_item a:has-text("Sauce Labs Backpack")'

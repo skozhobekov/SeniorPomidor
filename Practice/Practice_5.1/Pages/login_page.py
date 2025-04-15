@@ -1,4 +1,4 @@
-from Base_Page import BasePage
+from base_page import BasePage
 
 class LoginPage(BasePage):
      def __init__(self, page):
@@ -22,5 +22,3 @@ class LoginPage(BasePage):
      def logout(self):
         self.wait_for_selector_and_click(self.LOGOUT_BURGER)
         self.wait_for_selector_and_click(self.LOGOUT_BUTTON)
-
-

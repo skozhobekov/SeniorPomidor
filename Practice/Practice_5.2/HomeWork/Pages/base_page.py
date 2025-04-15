@@ -1,15 +1,15 @@
 from playwright.sync_api import expect
-from constants import BASE_URL
+
 
 class BasePage:
-    Base_Url = "https://www.saucedemo.com"
+    base_url = "https://www.saucedemo.com"
 
     def __init__(self, page):
         self.page = page
         self.endpoint=''
 
     def getUrl(self):
-        return f"{self.Base_Url}/{self.endpoint}"
+        return f"{self.base_url}/{self.endpoint}"
 
     def navigate_to_url(self):
         full_url = self.getUrl()

@@ -1,24 +1,38 @@
-# Даны две строки s и t, состоящие из строчных букв.
-# Строка t получается путем случайного перемешивания строки s с добавлением одного дополнительного символа в случайную позицию.
+# Даны две строки s и t. Нужно определить, является ли s подпоследовательностью t.
 #
-# Найти этот дополнительный символ.
+# Подпоследовательность — это строка, которая может быть получена из t путем удаления некоторых (возможно, нуля)
+# символов без изменения порядка оставшихся символов.
 #
 # Примеры:
-# Вход: s = "abcd", t = "abcde"
-# Выход: "e"
+# s = "abc"
+# t = "ahbgdc"
+# Вывод: True
+# Объяснение: Символы "abc" встречаются в "ahbgdc" в том же порядке.
 #
-# Вход: s = "aabbc", t = "aabbdc"
-# Выход: "d"
+# s = "axc"
+# t = "ahbgdc"
+# Вывод: False
+# Объяснение: Символ "x" отсутствует в "ahbgdc", поэтому s не является подпоследовательностью.
 
+s="abc"
+t="ahbgdc"
 
-def func(s,t):
-    word1= sorted(list(s))
-    word2 = sorted(list(t))
-    new = []
-    for i in word2:
-        if i not in word1:
-            new.append(i)
-    return "".join(new)
+def fun(s,t):
+    new = [i for i in list(t) if i in list(s)]
+    if new==list(s):
+        return True
+    else:
+        return False
 
-
-print(func("sanjar", "rajnase"))
+    #print(new3)
+    # for i in new2:
+    #     if i not in new1:
+    #         del i
+    #     else:
+    #         new3.append(i)
+    # print(new3, new1)
+    # if new1 == new3:
+    #     return True
+    # else:
+    #     return False
+print(fun(s,t))

@@ -1,4 +1,4 @@
-from Base_Page import BasePage
+from base_page import BasePage
 
 class CheckOutPage(BasePage):
     CHECKOUT_BUTTON_SELECTOR = '#btn_action checkout_button' #btn_action checkout_button
